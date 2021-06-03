@@ -69,6 +69,13 @@ for(var i=0;i<buttons.length;i++){
 
         buttons[i].clicked=true;
         order.push(buttons[i]);
+        
+        if(click==2 && disPoint(order[0].X,order[0].Y,order[1].X,order[1].Y)<=25){
+            click=0;
+            order=[];
+            console.log(route);
+        }
+
         if(click==2){
             click=0;
             revOrder=reverseArr(order)
@@ -82,14 +89,10 @@ for(var i=0;i<buttons.length;i++){
 
         }
 
-        if(click==2 && disPoint(order[0].X,order[0].Y,order[1].X,order[1].Y)<=25){
-            click=0;
-            order=[];
-            console.log(route);
-        }
 
     }
 }
+console.log(click)
 console.log(order);
 console.log(route);
 
