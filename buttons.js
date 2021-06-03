@@ -11,7 +11,12 @@ function drawCircles(x,y,r,clr,fillclr,number){
     ctx.fill();
     ctx.restore();
     ctx.font = "20px Times";
-    ctx.fillText(number, x-5, y+5);    
+    if(number/10 >=1){
+      ctx.fillText(number, x-9, y+5);    
+    }
+    else{
+      ctx.fillText(number, x-5, y+5);    
+    }
     ctx.closePath();
 }
 //distance between two points
