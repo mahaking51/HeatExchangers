@@ -54,7 +54,7 @@ function redrawButton(){
 }
 function drawArrows(){
     // console.log(route);
-    var x1,y1,x2,y2,dx,dy,angle;
+    var x1,y1,x2,y2,dx,dy,angle,dotted;
     var rad=25;
     for(var j=0;j<route.length;j++){
         for(var k=0;k<1;k++){
@@ -69,8 +69,14 @@ function drawArrows(){
             y1=y1+rad*Math.sin(angle);
             x2=x2-rad*Math.cos(angle);
             y2=y2-rad*Math.sin(angle);
-            console.log(x1,y1,x2,y2,angle);
-            canvas_arrow(ctx,x1,y1,x2,y2)
+            // console.log(x1,y1,x2,y2,angle);
+            if(j%2==0){
+                dotted=true;
+            }
+            else{
+                dotted=false;
+            }
+            canvas_arrow(ctx,x1,y1,x2,y2,dotted)
         }
     }
 }
