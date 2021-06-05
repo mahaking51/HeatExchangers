@@ -7,6 +7,8 @@ var buttons=[];
 var order=[];
 var click=0;
 var route=[];
+var flow=[];
+
 document.getElementById('submit').addEventListener('click',function(evt){
     evt.preventDefault();
     buttons=[];
@@ -117,6 +119,21 @@ console.log(order);
 console.log(route);
 
 }
+
+//delete all connections
+function deleteAllConnections(){
+    console.log("clicked");
+    click=0
+    order=[]
+    route=[];
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    drawArrows();
+    redrawButton();
+}
+
+//button event listener
+document.getElementById('delete').addEventListener('click',deleteAllConnections);
+
 canvas.addEventListener('click',function(evt){
     ctx.clearRect(0,0,canvas.width,canvas.height);
     clickDetection(evt.offsetX,evt.offsetY);   

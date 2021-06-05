@@ -21,6 +21,9 @@ body{
     display: inline;
     width:auto;
 }
+#delete{
+    margin-top: 0.5rem;
+}
 #control{
     display: inline;
     width:40%;
