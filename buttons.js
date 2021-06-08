@@ -13,13 +13,16 @@ function drawCircles(x,y,r,clr,fillclr,number){
     ctx.globalAlpha = 1;
     ctx.stroke();
     ctx.restore();
+    ctx.save();
     ctx.font = "20px Times";
+    ctx.fillStyle=clr;
     if(number/10 >=1){
       ctx.fillText(number, x-10, y+5);    
     }
     else{
       ctx.fillText(number, x-5, y+5);    
     }
+    ctx.restore();
     ctx.closePath();
 }
 //distance between two points
@@ -71,3 +74,28 @@ function canvas_arrow(context, fromx, fromy, tox, toy,flag) {
     }
     return ret;
 }
+
+  /**
+   * Function to check if we clicked inside an element with a particular class
+   * name.
+   * 
+   * @param {Object} e The event
+   * @param {String} className The class name to check against
+   * @return {Boolean}
+   */
+   function clickInsideElement( e, className ) {
+    var el = e.srcElement || e.target;
+    
+    if ( el.classList.contains(className) ) {
+      return el;
+    } else {
+      while ( el = el.parentNode ) {
+        if ( el.classList && el.classList.contains(className) ) {
+          return el;
+        }
+      }
+    }
+
+    return false;
+  }
+

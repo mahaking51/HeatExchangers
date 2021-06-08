@@ -36,6 +36,10 @@ function drawButtons(r,c){
                 X:(j+1)*xpos,
                 Y:(i+1)*ypos,
                 clicked:false,
+                rightClicked:false,
+                inlet:false,
+                inter:true,
+                outlet:false,
                 order:0
             }
             buttons.push(obj);
@@ -45,12 +49,24 @@ function drawButtons(r,c){
 }
 function redrawButton(){
     for(var i=0;i<buttons.length;i++){
+        if(buttons[i].inlet){
+            drawCircles(buttons[i].X,buttons[i].Y,25,"red","white",buttons[i].val);
+        }
+        else if(buttons[i].outlet){
+            drawCircles(buttons[i].X,buttons[i].Y,25,"blue","white",buttons[i].val);
+        }
+        else if(buttons[i].inter){
+            drawCircles(buttons[i].X,buttons[i].Y,25,"black","white",buttons[i].val);
+        }
         if(order.length>0 && buttons[i].val==order[0].val ){
             drawCircles(buttons[i].X,buttons[i].Y,25,"black","red",buttons[i].val);
         }
-        else{
-            drawCircles(buttons[i].X,buttons[i].Y,25,"black","white",buttons[i].val);
+        if(order.length>0 && buttons[i].val==order[0].val && buttons[i].inlet ){
+            drawCircles(buttons[i].X,buttons[i].Y,25,"red","red",buttons[i].val);
         }
+        // else{
+        //     drawCircles(buttons[i].X,buttons[i].Y,25,"black","white",buttons[i].val);
+        // }
     }
     
 }
@@ -84,8 +100,9 @@ function drawArrows(){
 }
 function clickDetection(x,y){
     // console.log(click);
+    toggleMenuOff(); 
 for(var i=0;i<buttons.length;i++){
-    
+    buttons[i].rightClicked=false;
     if(disPoint(buttons[i].X,buttons[i].Y,x,y)<=25){
         click++
 
