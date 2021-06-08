@@ -111,13 +111,29 @@ canvas.addEventListener('contextmenu',function(evt){
         var option=clickeElIsLink.getAttribute("data-action");
         // console.log( ", Task action - " + clickeElIsLink.getAttribute("data-action"));
         if(option==="inlet"){
+          if(!buttons[rSelect-1].inflow){
             buttons[rSelect-1].inlet=true;
+            buttons[rSelect-1].outlet=false;
+            buttons[rSelect-1].inter=false;
+          }
+          else{
+            alert("Not possible")
+          }
         }
         else if(option==="inter"){
             buttons[rSelect-1].inter=true;
+            buttons[rSelect-1].outlet=false;
+            buttons[rSelect-1].inlet=false;
         }
         else if(option==="outlet"){
+          if(!buttons[rSelect-1].outflow){
             buttons[rSelect-1].outlet=true;
+            buttons[rSelect-1].inter=false;
+            buttons[rSelect-1].inlet=false;
+          }
+          else{
+            alert("Not possible")
+          }
         }
         toggleMenuOff();
         buttons[rSelect-1].rightClicked=false;

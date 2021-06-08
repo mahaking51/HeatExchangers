@@ -40,6 +40,8 @@ function drawButtons(r,c){
                 inlet:false,
                 inter:true,
                 outlet:false,
+                inflow:false,
+                outflow:false,
                 order:0
             }
             buttons.push(obj);
@@ -119,7 +121,33 @@ for(var i=0;i<buttons.length;i++){
             click=0;
             revOrder=reverseArr(order)
             if(searchForArray(route,order)==-1 && searchForArray(route,revOrder)==-1){
-                route.push(order)
+                if(order[0].outflow && order[0].outlet){
+                    order=[];
+                    alert('outlet cant have an outward flow')
+                }
+                if(order[1].inlet){
+                    order=[]
+                    alert('inlet cant have an inward flow')
+                }
+                if(order[0].inflow || order[0].inlet){
+                    var tube1=order[0].val;
+                    buttons[tube1-1].outflow=true;
+                    var tube2=order[1].val;
+                    buttons[tube2-1].inflow=true;
+                    route.push(order)
+                }
+                else{
+                    alert('To allow flow make the tube as inlet') 
+                }
+                // if(route.length==0){
+                //     if(order[0].inlet){
+                //         route.push(order)
+                //     }
+                //     else{
+                //         alert('To allow flow make the tube as inlet')
+                //     }
+                // }
+    
             }
             else{
                 alert('wrong input')
@@ -131,7 +159,7 @@ for(var i=0;i<buttons.length;i++){
 
     }
 }
-console.log(click)
+console.log(buttons)
 console.log(order);
 console.log(route);
 
@@ -143,6 +171,12 @@ function deleteAllConnections(){
     click=0
     order=[]
     route=[];
+    for(var i=0;i<buttons.length;i++){
+        buttons[i].inflow=false;
+        buttons[i].outflow=false;
+        buttons[i].rightClicked=false;
+        buttons[i].clicked=false;
+    }
     ctx.clearRect(0,0,canvas.width,canvas.height);
     drawArrows();
     redrawButton();
