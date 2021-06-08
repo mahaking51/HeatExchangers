@@ -23,26 +23,46 @@ document.getElementById('submit').addEventListener('click',function(evt){
 function drawButtons(r,c){
     var obj;
     num=1
-    k=c+1
+    k=c+0.5
     l=r+1
     xpos=canvas.width/k 
     ypos=canvas.height/l
     
     for (var i=0;i<r;i++){
         for(var j=0;j<c;j++){
-            drawCircles((j+1)*xpos,(i+1)*ypos,25,"black","white",num)
-            obj={
-                val:num,
-                X:(j+1)*xpos,
-                Y:(i+1)*ypos,
-                clicked:false,
-                rightClicked:false,
-                inlet:false,
-                inter:true,
-                outlet:false,
-                inflow:false,
-                outflow:false,
-                order:0
+            if(i%2==0){
+                drawCircles((j+0.5)*xpos,(i+1)*ypos,25,"black","white",num)
+                obj={
+                    val:num,
+                    X:(j+0.5)*xpos,
+                    Y:(i+1)*ypos,
+                    clicked:false,
+                    rightClicked:false,
+                    inlet:false,
+                    inter:true,
+                    outlet:false,
+                    inflow:false,
+                    outflow:false,
+                    order:0
+                }
+    
+            }
+            else{
+                drawCircles((j+1)*xpos,(i+1)*ypos,25,"black","white",num)
+                obj={
+                    val:num,
+                    X:(j+1)*xpos,
+                    Y:(i+1)*ypos,
+                    clicked:false,
+                    rightClicked:false,
+                    inlet:false,
+                    inter:true,
+                    outlet:false,
+                    inflow:false,
+                    outflow:false,
+                    order:0
+                }
+    
             }
             buttons.push(obj);
             num++;
