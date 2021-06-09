@@ -8,7 +8,7 @@ var order=[];
 var click=0;
 var route=[];
 var flow=[];
-
+var cm=[];
 document.getElementById('submit').addEventListener('click',function(evt){
     evt.preventDefault();
     buttons=[];
@@ -18,7 +18,19 @@ document.getElementById('submit').addEventListener('click',function(evt){
     col=parseInt(document.getElementById('col').value)
     // console.log(row,col);
     drawButtons(row,col);
+    genCM(row,col)
 })
+//generating cm matrix
+function genCM(r,c){
+    for(var i=0;i<r*c;i++){
+        var arr=[]
+        for(var j=0;j<c*r;j++){
+            arr.push(0)
+        }
+        cm.push(arr);
+    }
+    drawMatrix();
+}
 //drawing rows and columns of buttons
 function drawButtons(r,c){
     var obj;
@@ -154,7 +166,9 @@ for(var i=0;i<buttons.length;i++){
                     buttons[tube1-1].outflow=true;
                     var tube2=order[1].val;
                     buttons[tube2-1].inflow=true;
-                    route.push(order)
+                    route.push(order);
+                    cm[tube1-1][tube2-1]=1;
+                    drawMatrix();
                 }
                 else{
                     alert('To allow flow make the tube as inlet') 
@@ -179,7 +193,7 @@ for(var i=0;i<buttons.length;i++){
 
     }
 }
-console.log(buttons)
+console.log(cm)
 console.log(order);
 console.log(route);
 
@@ -197,9 +211,28 @@ function deleteAllConnections(){
         buttons[i].rightClicked=false;
         buttons[i].clicked=false;
     }
+    for(var i=0;i<cm.length;i++){
+        for(var j=0;i<cm[i].length;j++){
+            cm[i][j]=0
+        }
+    }
     ctx.clearRect(0,0,canvas.width,canvas.height);
     drawArrows();
     redrawButton();
+}
+//displaying the cm matrix
+function drawMatrix(){
+    document.getElementById('cm').innerHTML='';
+    var html=""
+    for (var i=0;i<cm.length;i++){
+        html+='<tr>'
+        for(var j=0;j<cm[i].length;j++){
+            html+='<td>'+cm[i][j]+'</td>'
+        }
+        html+='</tr>';
+    }
+    document.getElementById('cm').innerHTML+=html;
+    document.getElementById('cmHead').display='block';
 }
 
 //button event listener
