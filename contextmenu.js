@@ -140,7 +140,6 @@ canvas.addEventListener('contextmenu',function(evt){
         ctx.clearRect(0,0,canvas.width,canvas.height);
         drawArrows();
         redrawButton();
-        console.log(buttons);    
       }
     //  else {
     //     var button = e.which || e.button;

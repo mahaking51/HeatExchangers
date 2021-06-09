@@ -9,6 +9,7 @@ var click=0;
 var route=[];
 var flow=[];
 var cm=[];
+var flow=[];
 document.getElementById('submit').addEventListener('click',function(evt){
     evt.preventDefault();
     buttons=[];
@@ -18,7 +19,8 @@ document.getElementById('submit').addEventListener('click',function(evt){
     col=parseInt(document.getElementById('col').value)
     // console.log(row,col);
     drawButtons(row,col);
-    genCM(row,col)
+    genCM(row,col);
+    genFlowArr(row,col);
 })
 //generating cm matrix
 function genCM(r,c){
@@ -30,6 +32,11 @@ function genCM(r,c){
         cm.push(arr);
     }
     drawMatrix();
+}
+function genFlowArr(r,c){
+for(var i=0;i<r*c;i++){
+    flow.push(0);
+}
 }
 //drawing rows and columns of buttons
 function drawButtons(r,c){
@@ -124,9 +131,11 @@ function drawArrows(){
             // console.log(x1,y1,x2,y2,angle);
             if(j%2==0){
                 dotted=true;
+                flow[route[j][k+1].val-1]='d'
             }
             else{
                 dotted=false;
+                flow[route[j][k+1].val-1]='s'
             }
             canvas_arrow(ctx,x1,y1,x2,y2,dotted)
         }
@@ -142,7 +151,7 @@ for(var i=0;i<buttons.length;i++){
 
         buttons[i].clicked=true;
         order.push(buttons[i]);
-        
+
         if(click==2 && disPoint(order[0].X,order[0].Y,order[1].X,order[1].Y)<=25){
             click=0;
             order=[];
@@ -168,7 +177,21 @@ for(var i=0;i<buttons.length;i++){
                     buttons[tube1-1].outflow=true;
                     var tube2=order[1].val;
                     buttons[tube2-1].inflow=true;
-                    route.push(order);
+                    //dotted
+                    if(route.length%2==0 && flow[tube2-1]=='d'){
+                        route.push(order);
+                    }
+                    //solid
+                    else if(route.length%2==1 && flow[tube2-1]=='s'){
+                        route.push(order);
+                    }
+                    else if(flow[tube2-1]==0){
+                        route.push(order);
+                    }
+                    else{
+                        alert('opp flow')
+                    }
+                    // route.push(order);
                     cm[tube1-1][tube2-1]=1;
                     drawMatrix();
                 }
@@ -194,7 +217,7 @@ for(var i=0;i<buttons.length;i++){
 
     }
 }
-console.log(cm)
+console.log(flow)
 console.log(order);
 console.log(route);
 

@@ -99,3 +99,25 @@ function canvas_arrow(context, fromx, fromy, tox, toy,flag) {
     return false;
   }
 
+function checkFlow(){
+  var flag=0;
+  for(var i=0;i<route.length;i++){
+    if(route[i][1].val==order[1].val){
+      console.log('inside');
+      if(!(route[i][1].flow==order[1].flow)){
+        flag=1
+        break;
+      }
+      else{
+        flag=0
+        break;
+      }  
+    }
+  }
+  if(flag==1){
+    return false
+  }
+  else{
+    return true
+  }
+}
