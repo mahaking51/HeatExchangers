@@ -156,10 +156,12 @@ for(var i=0;i<buttons.length;i++){
                 if(order[0].outflow && order[0].outlet){
                     order=[];
                     alert('outlet cant have an outward flow')
+                    return 0
                 }
                 if(order[1].inlet){
                     order=[]
                     alert('inlet cant have an inward flow')
+                    return 0
                 }
                 if(order[0].inflow || order[0].inlet){
                     var tube1=order[0].val;
@@ -181,7 +183,6 @@ for(var i=0;i<buttons.length;i++){
                 //         alert('To allow flow make the tube as inlet')
                 //     }
                 // }
-    
             }
             else{
                 alert('wrong input')
