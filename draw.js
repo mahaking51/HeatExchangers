@@ -180,19 +180,22 @@ for(var i=0;i<buttons.length;i++){
                     //dotted
                     if(route.length%2==0 && flow[tube2-1]=='d'){
                         route.push(order);
+                        cm[tube1-1][tube2-1]=1;
                     }
                     //solid
                     else if(route.length%2==1 && flow[tube2-1]=='s'){
                         route.push(order);
+                        cm[tube1-1][tube2-1]=1;
                     }
                     else if(flow[tube2-1]==0){
                         route.push(order);
+                        cm[tube1-1][tube2-1]=1;
                     }
                     else{
                         alert('opp flow')
                     }
                     // route.push(order);
-                    cm[tube1-1][tube2-1]=1;
+                    // cm[tube1-1][tube2-1]=1;
                     drawMatrix();
                 }
                 else{
