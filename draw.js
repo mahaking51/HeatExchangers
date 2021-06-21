@@ -12,6 +12,7 @@ var cm=[];
 var flow=[];
 document.getElementById('submit').addEventListener('click',function(evt){
     evt.preventDefault();
+    console.log('click');
     buttons=[];
     order=[]
     ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -31,7 +32,7 @@ function genCM(r,c){
         }
         cm.push(arr);
     }
-    drawMatrix();
+    // drawMatrix();
 }
 function genFlowArr(r,c){
 for(var i=0;i<r*c;i++){
@@ -196,7 +197,7 @@ for(var i=0;i<buttons.length;i++){
                     }
                     // route.push(order);
                     // cm[tube1-1][tube2-1]=1;
-                    drawMatrix();
+                    // drawMatrix();
                 }
                 else{
                     alert('To allow flow make the tube as inlet') 
@@ -263,8 +264,14 @@ function drawMatrix(){
 }
 
 //button event listener
-document.getElementById('delete').addEventListener('click',deleteAllConnections);
-
+function rotate(){
+    el=document.getElementById('canvas');
+    el.classList.add('rotated');
+    console.log(canvas.height);
+}    
+function unrotate(){
+    canvas.classList.remove('rotated');
+}
 canvas.addEventListener('click',function(evt){
     ctx.clearRect(0,0,canvas.width,canvas.height);
     clickDetection(evt.offsetX,evt.offsetY);   

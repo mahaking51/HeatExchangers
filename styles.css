@@ -1,14 +1,68 @@
+body{
+  margin:0.1rem;
+}
+i{
+  font-size: 2em;
+}
+.nav-item:hover{
+  background-color: #E1E8EB;
+}
+.nav-item{
+  text-align: center;
+}
+.endl{
+  margin-left:0.75rem;
+}
+.endr{
+  margin-right: 0.75rem;
+}
+li{
+  display: inline;
+}
+.nav{
+  border-right: 1px solid #D1D9D9;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+.last{
+  height:64px
+}
+.nav-link{
+  text-align: center;
+  padding:0.5rem;
+  color:black
+}
+.nav-link:hover{
+  color:black
+}
+#title{
+  display: block;
+  color:#D1D9D9;
+  margin: 0;
+  text-align: center;
+}
+.section{
+width:30%;
+margin:auto;
+display: inline-block;
+}
+#myTabContent{
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #D1D9D9;
+}
 canvas{
+  margin: 1.2rem;
     border-width: 2px;
     border-radius: 0.25rem;
 }
 .form-control{
-    margin:0.6rem 0.6rem;
+    /* margin:0.6rem 0.6rem; */
     border-radius: 0.5rem;
-    width:20%;
+    width:auto;
 }
-body{
-    margin-top: 2.5rem;
+.rotated{
+  transform: rotate(90deg);
+  margin-top: 20%;
 }
 #heatExcahngers{
     margin-top: 5%;

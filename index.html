@@ -10,17 +10,150 @@
     <title>HeatExchangers</title>
 </head>
 <body>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+<!-- Example split danger button -->
+<div class="btn-group">
+<button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+  <span class="visually-hidden">Toggle Dropdown</span>
+</button>
+<ul class="dropdown-menu">
+  <li><a class="dropdown-item" href="#">New Coil</a></li>
+  <li><a class="dropdown-item" href="#">Open Coil</a></li>
+  <li><a class="dropdown-item" href="#">Open Coil optimisation results</a></li>
+  <li><a class="dropdown-item" href="#">Save coil</a></li>
+  <li><hr class="dropdown-divider"></li>
+  <li><a class="dropdown-item" href="#">Options</a></li>
+  <li><hr class="dropdown-divider"></li>
+  <li><a class="dropdown-item" href="#">Close Current HX</a></li>
+  <li><a class="dropdown-item" href="#">Close All HX</a></li>
+  <li><hr class="dropdown-divider"></li>
+  <li><a class="dropdown-item" href="#">Quit</a></li>
+</ul>
+</div>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Home</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">View</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab"><ul class="nav nav-pills">
+      <ul class="nav">
+        <li class="nav-item endl">
+          <a class="nav-link " aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">New</a>
+        </li>
+        <li class="nav-item">
+          <!-- <i class="far fa-folder-open"></i> -->
+          <a class="nav-link " aria-current="page" href="#">Open</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="#">Optim.<br>results</a>
+        </li>
+        <li class="nav-item endr">
+          <!-- <i class="far fa-save"></i> -->
+          <a class="nav-link " aria-current="page" href="#">Save</a>
+        </li>
+        <!-- <div class="section">
+          <p id="title">Project</p>
+        </div> -->
+      </ul>
+      <ul class="nav">
+        <li class="nav-item endl">
+          <a class="nav-link " aria-current="page" href="#">Computational<br>Path</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="#">Simulate</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="#">Output</a>
+        </li>
+        <li class="nav-item endr">
+          <a class="nav-link " aria-current="page" href="#">Generate<br>possible paths</a>
+        </li>
+        <!-- <div class="section">
+          <p id="title">Project</p>
+        </div> -->
+      </ul>
+      <ul class="nav">
+        <li class="nav-item endl">
+          <a class="nav-link " aria-current="page" href="#">Select<br>bend</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="#">Select<br>tube</a>
+        </li>
+        <li class="nav-item endr">
+          <a class="nav-link " aria-current="page" href="#">Select<br>tube type</a>
+        </li>
+        <!-- <div class="section">
+          <p id="title">Project</p>
+        </div> -->
+      </ul>
+      <ul class="nav">
+        <li class="nav-item endl">
+          <a class="nav-link " aria-current="page" href="#">Add/<br>delete bend</a>
+        </li>
+        <li class="nav-item endr">
+          <a class="nav-link " aria-current="page" href="#">Delete all<br>bends</a>
+        </li>
+        <!-- <div class="section">
+          <p id="title">Project</p>
+        </div> -->
+      </ul>
+      <ul class="nav">
+        <li class="nav-item endl">
+          <a class="nav-link " aria-current="page" href="#">Optimize<br>paths</a>
+        </li>
+        <li class="nav-item endr">
+          <a class="nav-link " aria-current="page" href="#">Options</a>
+        </li>
+        <!-- <div class="section">
+          <p id="title">Project</p>
+        </div> -->
+      </ul>
+      <ul class="nav last">
+        <li class="nav-item endl">
+          <a class="nav-link " aria-current="page" href="#">Copy</a>
+        </li>
+        <li class="nav-item endr">
+          <a class="nav-link " aria-current="page" href="#">Print</a>
+        </li>
+        <!-- <div class="section">
+          <p id="title">Project</p>
+        </div> -->
+      </ul>
+      </ul>
+    </div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+      <ul class="nav">
+        <li class="nav-item endl">
+          <a class="nav-link " aria-current="page" href="#" id='horizontal' onclick="unrotate()">Horizontal<br>view</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="#" id='vertical' onclick="rotate()">Vertical<br>view</a>
+        </li>
+        <li class="nav-item endr">
+          <a class="nav-link " aria-current="page" href="#">Zoom</a>
+        </li>
+        <!-- <div class="section">
+          <p id="title">Project</p>
+        </div> -->
+      </ul>
+    </div>
+  </div>
+
 <div id="heatExchangers" class="container">
     <div id="mainDisplay" class="container">
-        <canvas class='canvas' id='canvas' width='900' height='700' style="border-style:solid; border-color: black;"></canvas>
+        <canvas class='canvas' id='canvas' width='900' height='600' style="border-style:solid; border-color: black;"></canvas>
     </div>
     <div id="control" class="container">
-        <form action="">
+        <!-- <form action="">
         <input placeholder="Rows" id='row' name=row type="number" class="form-control" autocomplete="off">
         <input placeholder="Columns" id='col' name='col' type="number" class="form-control" autocomplete="off">
         <button id='submit' class="btn btn-success">Submit</button>   
-    </form>
-    <button class="btn btn-danger" id="delete">Delete all conections</button> 
+    </form> -->
+    <!-- <button class="btn btn-danger" id="delete">Delete all conections</button>  -->
     </div>
 </div>
 <h3 id="cmHead">Matrix(cm)</h3>
@@ -41,7 +174,39 @@
       </li>
     </ul>
   </nav>
+  <!-- Modal for row and column input -->
+  <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Input</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+          <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Rows:</label>
+            <div class="col-sm-10">
+              <input placeholder="Rows" id='row' name=row type="number" class="form-control"  autocomplete="off">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Columns:</label>
+            <div class="col-sm-10">
+              <input placeholder="Columns" id='col' name='col' type="number" class="form-control" autocomplete="off">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id='submit' class="btn btn-success " data-bs-dismiss="modal">Submit</button>   
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 <script src="buttons.js"></script>
 <script src="draw.js"></script>
 <script src="contextmenu.js"></script>
