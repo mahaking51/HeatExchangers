@@ -143,9 +143,61 @@
     </div>
   </div>
 
-<div id="heatExchangers" class="container">
+<div class="float-container">
+<div class='container child' id='toggleList'>
+  <ul id="myUL">
+    <li><span class="caret">Input</span>
+      <ul class="nested">
+      <li><span class="caret">Process Conditions</span>
+          <ul class="nested">
+            <li>Tube Stream</li>
+            <li>Air Stream</li>
+            </li>
+          </ul>
+          <li><span class="caret">Thermophysical properties</span>
+            <ul class="nested">
+                <li>Tube Stream</li>
+                <li>Air Stream</li>
+                </ul>
+              </li>
+            <li><span class="caret">Exchanger Geometry</span>
+              <ul class="nested">
+                <li>Size</li>
+                <li>Tube Layout</li>
+                <li><span class="caret">Extended Surface</span>
+                  <ul class="nested">
+                      <li>Tube Stream</li>
+                      <li>Air Stream</li>
+                      </ul>
+                    </li>        
+                </ul>
+            </li>  
+            <li><span class="caret">Options</span>
+              <ul class="nested">
+                  <li>Calculations</li>
+                  <li>Heat Transfer</li>
+                  </ul>
+                </li>          
+        </li>  
+      </ul>
+    </li>
+  </ul>
+  <ul id="myUL">
+    <li><span class="caret">Simulation Output</span>
+      <ul class="nested">
+        <li>Input Data</li>
+        <li>Overall Performance</li>
+        <li>Tube side plots</li>
+        <li>Air side plots</li>
+        <li>Tube wise data</li>
+        <li>Segementwise data</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<div id="heatExchangers" class="container child">
     <div id="mainDisplay" class="container">
-        <canvas class='canvas' id='canvas' width='900' height='600' style="border-style:solid; border-color: black;"></canvas>
+        <canvas class='canvas' id='canvas' width='900' height='600' style="border-style:solid; border-color: #D1D9D9;"></canvas>
     </div>
     <div id="control" class="container">
         <!-- <form action="">
@@ -156,9 +208,10 @@
     <!-- <button class="btn btn-danger" id="delete">Delete all conections</button>  -->
     </div>
 </div>
+</div>
+
 <h3 id="cmHead">Matrix(cm)</h3>
 <table class="table table-bordered border-primary" id="cm">
-      
 </div>
 
 <nav id="context-menu" class="context-menu">

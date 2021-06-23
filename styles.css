@@ -16,9 +16,6 @@ i{
 .endr{
   margin-right: 0.75rem;
 }
-li{
-  display: inline;
-}
 .nav{
   border-right: 1px solid #D1D9D9;
   align-items: center;
@@ -63,6 +60,7 @@ canvas{
 .rotated{
   transform: rotate(90deg);
   margin-top: 20%;
+  
 }
 #heatExcahngers{
     margin-top: 5%;
@@ -203,4 +201,53 @@ body {
 }
 #cmHead{
   display: none;
+}
+ul, #myUL {
+  list-style-type: none;
+}
+
+#myUL {
+  margin: 0;
+  padding: 0;
+}
+.caret {
+  cursor: pointer;
+  -webkit-user-select: none; /* Safari 3.1+ */
+  -moz-user-select: none; /* Firefox 2+ */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none;
+}
+
+.caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.caret-down::before {
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Safari */
+  transform: rotate(90deg);  
+}
+
+.nested {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+.child{
+width:50%;
+float:left;
+}
+#toggleList{
+  width:20%;
+  height:600px;
+  margin-top: 1.2rem;
+  margin-left:0.5rem;
+  border-radius: 0.25rem;
+  padding:12px 12px;
+  border:2px solid #D1D9D9
 }
