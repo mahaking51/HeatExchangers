@@ -10,15 +10,15 @@ var route=[];
 var flow=[];
 var cm=[];
 var flow=[];
+var orient='hz';
 document.getElementById('submit').addEventListener('click',function(evt){
     evt.preventDefault();
     console.log('click');
     buttons=[];
-    order=[]
+    order=[];
     ctx.clearRect(0,0,canvas.width,canvas.height);
     row=parseInt(document.getElementById('row').value)
     col=parseInt(document.getElementById('col').value)
-    // console.log(row,col);
     drawButtons(row,col);
     genCM(row,col);
     genFlowArr(row,col);
@@ -47,11 +47,10 @@ function drawButtons(r,c){
     l=r+1
     xpos=canvas.width/k 
     ypos=canvas.height/l
-    
     for (var i=0;i<r;i++){
         for(var j=0;j<c;j++){
             if(i%2==0){
-                drawCircles((j+0.5)*xpos,(i+1)*ypos,25,"black","white",num)
+                drawCircles((j+0.5)*xpos,(i+1)*ypos,25,"black","white",num,orient)
                 obj={
                     val:num,
                     X:(j+0.5)*xpos,
@@ -65,10 +64,9 @@ function drawButtons(r,c){
                     outflow:false,
                     order:0
                 }
-    
             }
             else{
-                drawCircles((j+1)*xpos,(i+1)*ypos,25,"black","white",num)
+                drawCircles((j+1)*xpos,(i+1)*ypos,25,"black","white",num,orient)
                 obj={
                     val:num,
                     X:(j+1)*xpos,
@@ -92,19 +90,19 @@ function drawButtons(r,c){
 function redrawButton(){
     for(var i=0;i<buttons.length;i++){
         if(buttons[i].inlet){
-            drawCircles(buttons[i].X,buttons[i].Y,25,"red","white",buttons[i].val);
+            drawCircles(buttons[i].X,buttons[i].Y,25,"red","white",buttons[i].val,orient);
         }
         else if(buttons[i].outlet){
-            drawCircles(buttons[i].X,buttons[i].Y,25,"blue","white",buttons[i].val);
+            drawCircles(buttons[i].X,buttons[i].Y,25,"blue","white",buttons[i].val,orient);
         }
         else if(buttons[i].inter){
-            drawCircles(buttons[i].X,buttons[i].Y,25,"black","white",buttons[i].val);
+            drawCircles(buttons[i].X,buttons[i].Y,25,"black","white",buttons[i].val,orient);
         }
         if(order.length>0 && buttons[i].val==order[0].val ){
-            drawCircles(buttons[i].X,buttons[i].Y,25,"black","red",buttons[i].val);
+            drawCircles(buttons[i].X,buttons[i].Y,25,"black","red",buttons[i].val,orient);
         }
         if(order.length>0 && buttons[i].val==order[0].val && buttons[i].inlet ){
-            drawCircles(buttons[i].X,buttons[i].Y,25,"red","red",buttons[i].val);
+            drawCircles(buttons[i].X,buttons[i].Y,25,"red","red",buttons[i].val,orient);
         }
         // else{
         //     drawCircles(buttons[i].X,buttons[i].Y,25,"black","white",buttons[i].val);
@@ -158,12 +156,12 @@ for(var i=0;i<buttons.length;i++){
             order=[];
             console.log(route);
         }
-
         if(click==2){
             click=0;
             revOrder=reverseArr(order)
             if(searchForArray(route,order)==-1 && searchForArray(route,revOrder)==-1){
-                if(order[0].outflow && order[0].outlet){
+                // console.log(order[0].outflow ,order[0].outlet,order[0]);
+                if(!order[0].outflow && order[0].outlet){
                     order=[];
                     alert('outlet cant have an outward flow')
                     return 0
@@ -215,15 +213,12 @@ for(var i=0;i<buttons.length;i++){
                 alert('wrong input')
             }
             order=[]    
-
         }
-
-
     }
 }
-console.log(flow)
-console.log(order);
-console.log(route);
+// console.log(flow)
+// console.log(order);
+// console.log(route);
 
 }
 
@@ -268,9 +263,18 @@ function rotate(){
     el=document.getElementById('canvas');
     el.classList.add('rotated');
     console.log(canvas.height);
+    orient='vert';
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    drawArrows();
+    redrawButton();
 }    
 function unrotate(){
     canvas.classList.remove('rotated');
+    orient='hz';
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    drawArrows();
+    redrawButton();
+
 }
 //toggle list menu 
 
@@ -283,6 +287,19 @@ for (i = 0; i < toggler.length; i++) {
     this.classList.toggle("caret-down");
   });
 }
+
+// zoom in and out
+// document.getElementById('zoom').addEventListener('change',function(){
+//     var zoom=parseInt(document.getElementById('zoom').value);
+//     canvas.style.zoom=1+(zoom*0.1)
+//     console.log(zoom);
+
+// })
+
+
+
+
+
 canvas.addEventListener('click',function(evt){
     ctx.clearRect(0,0,canvas.width,canvas.height);
     clickDetection(evt.offsetX,evt.offsetY);   

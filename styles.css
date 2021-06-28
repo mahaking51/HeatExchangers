@@ -48,38 +48,47 @@ display: inline-block;
   border-bottom: 1px solid #D1D9D9;
 }
 canvas{
-  margin: 1.2rem;
     border-width: 2px;
     border-radius: 0.25rem;
 }
 .form-control{
-    /* margin:0.6rem 0.6rem; */
     border-radius: 0.5rem;
     width:auto;
 }
 .rotated{
   transform: rotate(90deg);
-  margin-top: 20%;
-  
+  margin-top: 17.8%;
+  margin-left: 0;
 }
 #heatExcahngers{
     margin-top: 5%;
     margin-right: 10px;
+    height: 600px;
+    width:auto;
     float: left;
+    display: inline-block;
 }
 #mainDisplay{
     float:left;
-    margin-right: 50px;
+    margin-left: 25px;
+    margin-top: 1.2rem;
     display: inline;
-    width:auto;
+    width:150%;
+    overflow: auto;
+    height: 630px;
+    border: 2px solid;
+    border-color: #D1D9D9;
+    border-radius: 0.25rem;
 }
 #delete{
-    margin-top: 0.5rem;
+  margin-top: 0.5rem;
 }
+
 #control{
     display: inline;
     width:40%;
 }
+
 *,
 *::before,
 *::after {
@@ -244,10 +253,14 @@ float:left;
 }
 #toggleList{
   width:20%;
-  height:600px;
+  height:630px;
   margin-top: 1.2rem;
   margin-left:0.5rem;
   border-radius: 0.25rem;
   padding:12px 12px;
   border:2px solid #D1D9D9
+}
+#zoom{
+  position:fixed;
+  margin:1.2rem;
 }

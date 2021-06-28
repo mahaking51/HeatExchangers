@@ -1,13 +1,13 @@
 //draw circles with specified color ,radius and a number within
-function drawCircles(x,y,r,clr,fillclr,number){
+function drawCircles(x,y,r,clr,fillclr,number,orient='hz'){
 
     ctx.beginPath();
     ctx.setLineDash([]);
-    ctx.strokeStyle=clr;
     ctx.lineWidth = 3;
     ctx.save();
     ctx.globalAlpha = 0.75;
     ctx.fillStyle=fillclr;
+    ctx.strokeStyle=clr;
     ctx.arc(x,y, r, 0, 2 * Math.PI);
     ctx.fill();
     ctx.globalAlpha = 1;
@@ -17,10 +17,30 @@ function drawCircles(x,y,r,clr,fillclr,number){
     ctx.font = "20px Times";
     ctx.fillStyle=clr;
     if(number/10 >=1){
-      ctx.fillText(number, x-10, y+5);    
+      if(orient==='vert'){
+        ctx.save();
+        ctx.translate(x,y)
+        ctx.rotate(-Math.PI/2);
+        ctx.fillText(number, -10, 5);    
+        ctx.restore();
+        console.log('rotated');
+      }
+      else{
+        ctx.fillText(number, x-10, y+5);    
+      }
     }
     else{
-      ctx.fillText(number, x-5, y+5);    
+      if(orient==='vert'){
+        ctx.save();
+        ctx.translate(x,y)
+        ctx.rotate(-Math.PI/2);
+        ctx.fillText(number, -5, 5);  
+        ctx.restore();  
+        console.log('rotated');
+      }
+      else{
+        ctx.fillText(number, x-5, y+5);    
+      }
     }
     ctx.restore();
     ctx.closePath();
