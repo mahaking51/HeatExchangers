@@ -27,7 +27,7 @@ i{
 .nav-link{
   text-align: center;
   padding:0.5rem;
-  color:black
+  color:black;
 }
 .nav-link:hover{
   color:black
@@ -75,7 +75,7 @@ canvas{
     display: inline;
     width:150%;
     overflow: auto;
-    height: 630px;
+    height: 600px;
     border: 2px solid;
     border-color: #D1D9D9;
     border-radius: 0.25rem;
@@ -253,7 +253,7 @@ float:left;
 }
 #toggleList{
   width:20%;
-  height:630px;
+  height:600px;
   margin-top: 1.2rem;
   margin-left:0.5rem;
   border-radius: 0.25rem;
