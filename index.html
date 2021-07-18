@@ -199,7 +199,7 @@
   <ul id="myUL">
     <li><span class="caret">Simulation Output</span>
       <ul class="nested">
-        <li>Input Data</li>
+        <li id='input' class='clickable'>Input Data</li>
         <li>Overall Performance</li>
         <li>Tube side plots</li>
         <li>Air side plots</li>
@@ -213,6 +213,51 @@
     <div id="mainDisplay" class="container">
       <!-- <input type="range" id='zoom' min="-10" max='10'> -->
         <canvas class='canvas' id='canvas' width='900' height='595'></canvas>
+        <div class="container" id='inputData' style="display: none;">
+          <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Length</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputLen" autocomplete="off" >
+              <select name="" id="lengthUnitOpt" class="form-select options">
+                <option value="m">m</option>
+                <option value="ft">ft</option>
+                <option value="inches">inches</option>
+                <option value="mm">mm</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Diameter</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputDia">
+              <select name="" id="diaUnitOpt" class="form-select options">
+                <option value="m">m</option>
+                <option value="ft">ft</option>
+                <option value="inches">inches</option>
+                <option value="mm">mm</option>
+              </select>
+
+            </div>
+          </div>  
+          <button class="btn btn-success" id='dataSubmit'>Submit</button>  
+          <table class="table" id='dataTable' style='display: none;'>
+            <tbody>
+              <tr>
+                <td>Length</td>
+                <td id='length'></td>
+                <td id='lenUni'></td>
+              </tr>
+              <tr>
+                <td>Diameter</td>
+                <td id='dia'></td>
+                <td id='diaUni'></td>
+              </tr>
+            </tbody>
+          </table>  
+          </div>          
+        
+        
+        </div>
     </div>
     <div id="control" class="container">
         <!-- <form action="">

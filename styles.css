@@ -264,3 +264,24 @@ float:left;
   position:fixed;
   margin:1.2rem;
 }
+.clickable{
+  cursor: pointer;
+}
+#inputData{
+  padding: 2rem;
+}
+
+.form-control{
+  display: inline;
+}
+.options{
+  display: inline-block;
+  width:10%;
+}
+#dataSubmit{
+  margin-top:1.2rem;
+  width:10%;
+}
+table{
+  margin-top: 1.2rem;
+}

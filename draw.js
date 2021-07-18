@@ -11,6 +11,7 @@ var flow=[];
 var cm=[];
 var flow=[];
 var orient='hz';
+var tubeLength,tubeDia,tubeLengthUnit,tubeDiaUnit;
 document.getElementById('submit').addEventListener('click',function(evt){
     evt.preventDefault();
     console.log('click');
@@ -296,8 +297,21 @@ for (i = 0; i < toggler.length; i++) {
 
 // })
 
-
-
+document.getElementById('input').addEventListener('click',function(){
+    document.getElementById('inputData').style.display='block';
+    document.getElementById('canvas').style.display='none';
+})
+document.getElementById('dataSubmit').addEventListener('click',function(){
+    document.getElementById('dataTable').style.display='block';
+    tubeLength=document.getElementById('inputLen').value;
+    tubeDia=document.getElementById('inputDia').value;
+    tubeLengthUnit=document.getElementById("lengthUnitOpt").value;
+    tubeDiaUnit=document.getElementById('diaUnitOpt').value;
+    document.getElementById('length').innerHTML=tubeLength;
+    document.getElementById('dia').innerHTML=tubeDia;
+    document.getElementById('lenUni').innerHTML=tubeLengthUnit;
+    document.getElementById('diaUni').innerHTML=tubeDiaUnit;
+})
 
 
 canvas.addEventListener('click',function(evt){
