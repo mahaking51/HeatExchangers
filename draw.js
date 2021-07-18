@@ -12,6 +12,7 @@ var cm=[];
 var flow=[];
 var orient='hz';
 var tubeLength,tubeDia,tubeLengthUnit,tubeDiaUnit;
+var tubeInfo;
 document.getElementById('submit').addEventListener('click',function(evt){
     evt.preventDefault();
     console.log('click');
@@ -311,6 +312,12 @@ document.getElementById('dataSubmit').addEventListener('click',function(){
     document.getElementById('dia').innerHTML=tubeDia;
     document.getElementById('lenUni').innerHTML=tubeLengthUnit;
     document.getElementById('diaUni').innerHTML=tubeDiaUnit;
+    tubeInfo={
+        diameter:tubeDia,
+        unitDia:tubeDiaUnit,
+        length:tubeLength,
+        unitLength:tubeLengthUnit
+    }
 })
 
 
